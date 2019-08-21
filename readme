@@ -1,0 +1,6 @@
+this is a from the ground up sbt project, to test swt/jface with scala
+don't want an ide getting in the way yet
+run the sbt package to get the jar made in /target/scala-2.13/
+have made launcher script called run_kernai.sh
+this kicks of java -jar and passes the necessary class files
+note all dependencies are in the lib folder, at least the unmanaged ones
