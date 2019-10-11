@@ -6,7 +6,7 @@ import scalikejdbc._
 object DBTests {
 
   def run() {
-    val user = "paulm"
+    /*val user = "paulm"
     val url = "jdbc:postgresql://kronmintdesktop:5432/golangtest"
     val password = "reddingo"
     val driver = "org.postgresql.Driver"
@@ -52,5 +52,7 @@ object DBTests {
 
 
     connection.close()
+
+     */
   }
 }

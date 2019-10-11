@@ -77,6 +77,10 @@ class MainWindow extends ApplicationWindow(null){
     val masterPropertyTabItem = new CTabItem(folder, SWT.NONE)
     masterPropertyTabItem.setText("&Master Properties")
 
+    val item2 = new CTabItem(folder, SWT.NONE)
+    item2.setText("&Have a party")
+
+
     container
   }
 
