@@ -28,10 +28,10 @@ import org.eclipse.swt.graphics.Point
 import org.eclipse.swt.custom.SashForm
 import org.eclipse.swt.widgets.Button
 import org.eclipse.nebula.widgets.pshelf._
-
-
 import DbFunctions._
 import DBTests._
+import com.parinherm.model.ScalableLanguageDocument
+import com.parinherm.ui.ReferenceDocView
 
 
 
@@ -49,10 +49,11 @@ class MainWindow extends ApplicationWindow(null){
     container.setLayout(new FillLayout)
 
     val sashForm: SashForm = new SashForm(container, SWT.HORIZONTAL)
-    val weights: Array[Int] = Array[Int](1, 2)
-    //sashForm.setWeights(weights)
+    val weights: Array[Int] = Array[Int](1, 4)
     val navContainer: Composite = new Composite(sashForm, SWT.NONE)
     mainContainer = new Composite(sashForm, SWT.NONE)
+    //this must be set under the code that assigns both side to sash form
+    sashForm.setWeights(weights)
 
     navContainer.setLayout(new FillLayout(SWT.VERTICAL))
     mainContainer.setLayout(new FillLayout(SWT.VERTICAL))
@@ -77,13 +78,28 @@ class MainWindow extends ApplicationWindow(null){
     val masterPropertyTabItem = new CTabItem(folder, SWT.NONE)
     masterPropertyTabItem.setText("&Master Properties")
 
-    val item2 = new CTabItem(folder, SWT.NONE)
-    item2.setText("&Have a party")
+    val docTestItem = new CTabItem(folder, SWT.NONE)
+    docTestItem.setText("&Document Test")
+    val docTestContainer = new Composite(folder, SWT.NONE)
+    docTestContainer.setLayout(new FillLayout())
+    docTestItem.setControl(docTestContainer)
 
+
+
+    val scalableLanguageDocument = new ScalableLanguageDocument()
+    val docView: ReferenceDocView = new ReferenceDocView(docTestContainer, SWT.BORDER, scalableLanguageDocument)
+    mainContainer.layout()
+    scalableLanguageDocument.run()
 
     container
   }
 
+  private def clearComposite(composite: Composite) = {
+    for (control <- composite.getChildren) {
+      control.dispose
+    }
+    composite
+  }
 
 
   override def createMenuManager(): MenuManager = {
