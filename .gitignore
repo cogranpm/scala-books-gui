@@ -6,3 +6,4 @@ project
 .hgignore
 *~
 *.log
+*.iml

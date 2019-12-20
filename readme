@@ -4,3 +4,7 @@ run the sbt package to get the jar made in /target/scala-2.13/
 have made launcher script called run_kernai.sh
 this kicks of java -jar and passes the necessary class files
 note all dependencies are in the lib folder, at least the unmanaged ones
+
+sbt keeps all cached jars in .ivy2, copy these to the lib folder when required
+deciding to go with the anorm library
+

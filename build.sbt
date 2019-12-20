@@ -2,13 +2,14 @@ name := "scala-books-gui"
 
 version := "0.1"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 //scalacOptions += "-Ylog-classpath"
 
 packageOptions += Package.ManifestAttributes(
   "Class-Path" -> "${CLASSPATH}:lib/*"
 )
+
 
 lazy val hello = (project in file("."))
   .settings(

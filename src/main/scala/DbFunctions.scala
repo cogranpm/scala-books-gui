@@ -24,15 +24,15 @@ object DbFunctions {
 
   def runQuery(): Unit =
   {
-    val result: List[Book] = SQL(""" select id, name from book where id = {bookId}""").on("bookId" -> 3).as(parser.*)
+    val result: List[Book] = SQL(""" select id, name, subjectId from book where id = {bookId}""").on("bookId" -> 3).as(parser.*)
     result.foreach( book => println("anorm results: " + book.id + book.name))
   }
 
   def insertBook(name: String): Unit =
   {
     val id: Option[Long] =
-      SQL("insert into book(name) values ({name})")
-      .on("name" ->  name).executeInsert()
+      SQL("insert into book(name, subjectId) values ({name}, {subjectId} )")
+      .on("name" ->  name, "subjectId" -> 10).executeInsert()
 
     id.foreach(x => println("inserted key was: " + x))
   }

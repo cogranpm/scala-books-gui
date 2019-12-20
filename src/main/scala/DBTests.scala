@@ -14,7 +14,7 @@ case class Note(id: Long, name: String, body: String, script: String)
 
 
   def run() {
-    val user = "paulm"
+    /*val user = "paulm"
     val url = "jdbc:postgresql://kronmintdesktop:5432/golangtest"
     val password = "reddingo"
     val driver = "org.postgresql.Driver"
@@ -61,5 +61,7 @@ case class Note(id: Long, name: String, body: String, script: String)
 */
 
     connection.close()
+
+     */
   }
 }
