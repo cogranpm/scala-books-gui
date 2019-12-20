@@ -25,7 +25,9 @@ lazy val hello = (project in file("."))
       "commons-dbutils" % "commons-dbutils" % "1.7",
       "org.scalikejdbc" %% "scalikejdbc"       % "3.3.5",
       "ch.qos.logback"  %  "logback-classic" % "1.2.3",
-      "org.playframework.anorm" %% "anorm" % "2.6.4"
+      "org.playframework.anorm" %% "anorm" % "2.6.4",
+      "com.resare.repackage" % "org.eclipse.swt.macosx.x86_64" % "3.105.0.v20160603-0902"
+
     )
 
   )

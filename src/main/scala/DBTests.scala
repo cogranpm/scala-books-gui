@@ -3,7 +3,15 @@ import java.sql.DriverManager
 import org.apache.commons.dbutils._
 import scalikejdbc._
 
+
+
 object DBTests {
+
+case class Book (id: Long, subjectId: Long, name: String)
+case class Subject(id: Long, name: String)
+case class Chapter(id: Long, name: String)
+case class Note(id: Long, name: String, body: String, script: String)
+
 
   def run() {
     val user = "paulm"
@@ -33,6 +41,7 @@ object DBTests {
     ConnectionPool.singleton(url, user, password)
     ConnectionPool.add("golangtest", url, user, password)
 
+/*
     val id = 3
     val book: Option[Book] = DB readOnly { implicit session =>
       sql"select id, name from book where id = ${id}"
@@ -49,7 +58,7 @@ object DBTests {
       _.name
     }))
     book.foreach(a => println(a.name))
-
+*/
 
     connection.close()
   }
