@@ -1,16 +1,16 @@
 package com.parinherm.model
 
-import org.eclipse.jface.text.{DocumentEvent, IDocumentListener}
 import com.parinherm.files.DocumentIO
+import org.eclipse.jface.text.{DocumentEvent, IDocumentListener}
 
-class ScalableLanguageDocument (fileName: String) extends ReferenceDoc (fileName) {
+class Chapter2Document (fileName: String) extends ReferenceDoc (fileName ) {
+
+
 
   override def run(): Unit = {
 
     val contents = docWriter.readTextFile(fileName)
     addMessage(contents)
-    //addMessage("A Scalable Language")
-    //grows()
 
     document.addDocumentListener( new IDocumentListener {
       override def documentAboutToBeChanged(documentEvent: DocumentEvent): Unit = {
@@ -27,6 +27,4 @@ class ScalableLanguageDocument (fileName: String) extends ReferenceDoc (fileName
   override def save(): Unit = {
     if (dirtyFlag) docWriter.write(fileName, document.get())
   }
-
-
 }

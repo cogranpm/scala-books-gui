@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Composite
 import org.eclipse.jface.text.source.SourceViewerConfiguration
 
 
-class ReferenceDocView  (parent: Composite, style: Int, document: ReferenceDoc) extends Composite (parent, style) {
+class ReferenceDocView  (parent: Composite, style: Int, val document: ReferenceDoc) extends Composite (parent, style) {
 
   setLayout(new FillLayout(SWT.VERTICAL))
 
@@ -26,4 +26,6 @@ class ReferenceDocView  (parent: Composite, style: Int, document: ReferenceDoc) 
   txtBody.configure(new SourceViewerConfiguration)
   txtBody.setDocument(document.getDocument(), annotationModel)
   ruler.addDecorator(0, new LineNumberRulerColumn)
+
+  this.addDisposeListener( (e) => document.save())
 }
