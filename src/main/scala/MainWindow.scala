@@ -12,6 +12,7 @@ import org.eclipse.swt.SWT
 import org.eclipse.swt.custom.CTabFolder
 import org.eclipse.swt.custom.CTabItem
 import org.eclipse.swt.events.{SelectionAdapter, SelectionEvent, SelectionListener}
+import org.eclipse.swt.events.SelectionListener._
 import org.eclipse.swt.graphics.Image
 import org.eclipse.swt.graphics.Point
 import org.eclipse.swt.layout.{FillLayout, GridData, GridLayout, RowLayout}
@@ -123,7 +124,7 @@ class MainWindow extends ApplicationWindow(null){
 
   override def getInitialSize: Point = new Point(900, 900)
 
-  def addReferenceButton(name: String, handler: SelectionAdapter): Unit = {
+  def addReferenceButton(name: String, handler: SelectionListener): Unit = {
     val btnChapter1: Button = new Button(navReference.getBody, SWT.PUSH)
     btnChapter1.setText(name)
     btnChapter1.addSelectionListener(handler)
@@ -147,22 +148,22 @@ class MainWindow extends ApplicationWindow(null){
     DbFunctions.close()
 
     val chapter1Desc = "Chapter 1"
-    val chapter1Handler = new SelectionAdapter() {
-      override def widgetSelected(e: SelectionEvent): Unit = {
+    val handler: SelectionListener = widgetSelectedAdapter(
+      (e: SelectionEvent) =>
+      {
         val scalableLanguageDocument = new ScalableLanguageDocument("Chapter1.doc")
         addReferenceTab(chapter1Desc, scalableLanguageDocument)
-      }
-    }
+      })
 
-    addReferenceButton(chapter1Desc, chapter1Handler)
+    addReferenceButton(chapter1Desc, handler)
 
     val chapter2Desc = "Chapter 2"
-    val chapter2Handler = new SelectionAdapter {
-      override def widgetSelected(e: SelectionEvent): Unit = {
+    val chapter2Handler = widgetSelectedAdapter (
+      (e: SelectionEvent) =>
+      {
         val chap2Doc = new Chapter2Document("Chapter2.doc")
         addReferenceTab(chapter2Desc, chap2Doc)
-      }
-    }
+      })
     addReferenceButton(chapter2Desc, chapter2Handler)
 
   }
