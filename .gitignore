@@ -7,3 +7,6 @@ project
 *~
 *.log
 *.iml
+/.bloop
+/.metals
+/.vscode
