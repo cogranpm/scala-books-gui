@@ -30,7 +30,7 @@ import org.eclipse.swt.widgets.Button
 import org.eclipse.nebula.widgets.pshelf._
 import DbFunctions._
 import DBTests._
-import com.parinherm.model.{Chapter2Document, ReferenceDoc, ScalableLanguageDocument}
+import com.parinherm.model.{Chapter2Document, ReferenceDoc, ScalableLanguageDocument, FuncProgScala}
 import com.parinherm.ui.ReferenceDocView
 
 
@@ -78,9 +78,6 @@ class MainWindow extends ApplicationWindow(null){
     item.setText("&Getting Started")
     val masterPropertyTabItem = new CTabItem(folder, SWT.NONE)
     masterPropertyTabItem.setText("&Master Properties")
-
-
-
     container
   }
 
@@ -165,6 +162,16 @@ class MainWindow extends ApplicationWindow(null){
         addReferenceTab(chapter2Desc, chap2Doc)
       })
     addReferenceButton(chapter2Desc, chapter2Handler)
+
+
+    val funcScalaDesc = "Functional Prog with Scala"
+    val funcScala = widgetSelectedAdapter (
+      (e: SelectionEvent) =>
+      {
+        val funcScalaDoc = new FuncProgScala("FuncProgScala.doc")
+        addReferenceTab(funcScalaDesc, funcScalaDoc)
+      })
+    addReferenceButton(funcScalaDesc, funcScala)
 
   }
 
